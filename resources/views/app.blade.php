@@ -51,6 +51,17 @@
 		<!-- Contenu de la page, exclu nav, footer, etc. -->
 		<main id="content-wrap" class="container">
 			<div id="layersWrap">
+@foreach($layers as $layer)
+				<div id="L{{$layer['ID']}}" class="row layer">
+					<div class="row">
+						<h2 class="col">{{$layer['Name']}}</h2>
+						<button class="col btn btn-success" onclick="newDevice('Device', 'L{{$layer['ID']}}')">Nouveau périphérique</button>
+						<button class="col btn btn-primary">Modifier</button>
+						<button class="col btn btn-danger" onclick="delContainer('L{{$layer['ID']}}')">Supprimer</button>
+					</div>
+					<hr>
+				</div>
+@endforeach
 			</div>
 			<button id="newLayerBtn" class="m-4 btn btn-primary" onclick="newLayer()">Nouvelle couche</button>
 		</main>
