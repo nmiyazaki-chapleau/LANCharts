@@ -7,7 +7,7 @@ use App\Models\Device;
 use App\Models\Connection;
 use Illuminate\Http\Request;
 
-class LayerController extends Controller
+class DataController extends Controller
 {
 	public function index(){
 		return view('app',

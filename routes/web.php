@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\LayerController::class, 'index']);
+Route::get('/', [\App\Http\Controllers\DataController::class, 'index']);
 
 //Route::get('app', function () {
 //       	return view('app');
