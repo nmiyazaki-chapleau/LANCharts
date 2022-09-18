@@ -52,14 +52,24 @@
 		<main id="content-wrap" class="container">
 			<div id="layersWrap">
 @foreach($layers as $layer)
-				<div id="L{{$layer['ID']}}" class="row layer">
+				<div id="L{{ $layer->ID }}" class="row layer">
 					<div class="row">
-						<h2 class="col">{{$layer['Name']}}</h2>
-						<button class="col btn btn-success" onclick="newDevice('Device', 'L{{$layer['ID']}}')">Nouveau périphérique</button>
+						<h2 class="col">{{ $layer->Name }}</h2>
+						<button class="col btn btn-success" onclick="newDevice('Device', 'L{{ $layer->ID }}')">Nouveau périphérique</button>
 						<button class="col btn btn-primary">Modifier</button>
-						<button class="col btn btn-danger" onclick="delContainer('L{{$layer['ID']}}')">Supprimer</button>
+						<button class="col btn btn-danger" onclick="delContainer('L{{ $layer->ID }}')">Supprimer</button>
 					</div>
 					<hr>
+					<div>
+						<!-- Faire une query seulement pour la layer concerné au lieu de loop à travers tout pour à layer serait plus efficace -->
+@foreach($devices as $device)
+@if ($device->InLayer == $layer->ID)
+						<div id="D{{ $device->ID }}" class="col m-2 device">
+							<div class="h3">{{ $device->Name }}</div>
+						</div>
+@endif
+@endforeach
+					</div>
 				</div>
 @endforeach
 			</div>

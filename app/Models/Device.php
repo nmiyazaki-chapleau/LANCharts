@@ -9,5 +9,5 @@ class Device extends Model
 {
     use HasFactory;
     protected $table = 'devices';
-    public $incrementing = false;
+    public $incrementing = true;
 }
