@@ -7,35 +7,42 @@
 </head>
 
 <body>
-<div class="container">
+	<div class="container">
 
-	<h1>Create a layer</h1>
+		<h1>Create a layer</h1>
 
-<!-- if there are creation errors, they will show here -->
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-
-	<form action="{{ route('layer.store') }}" method="POST">
-		<div class="col-sm-6 form-group">
-			<label for ="Name">Name:</label>
-			<div class=col-sm-6>
-				<input class="form-control" name="Name" type=text></input>
-		    	</div>
+		<!-- if there are creation errors, they will show here -->
+		@if ($errors->any())
+		<div class="alert alert-danger">
+			<ul>
+				@foreach ($errors->all() as $error)
+				<li>{{ $error }}</li>
+				@endforeach
+			</ul>
 		</div>
-		
-		<div class="form-group">
-		</div>
-		
-		<button class="btn btn-primary" type=submit>Submit</button>
-	</form>
+		@endif
 
-</div>
+		<div class="container text-center justify-content-center">
+			<form class="row " action="{{ route('layer.store') }}" method="POST">
+
+				<div class="row my-2 form-group">
+					<label class="col-sm-1 col-form-label" for="Name">Name</label>
+					<div class=col-sm-4>
+						<input class="form-control" name="Name" type=text placeholder="Entrez un nom"></input>
+					</div>
+				</div>
+				<div class="row my-2 form-group">
+					<label class="col-sm-1 col-form-label" for="Position">Position</label>
+					<div class=col-sm-4>
+						<input class="form-control" name="Position" type=text placeholder="Entrez la position"></input>
+					</div>
+				</div>
+
+				<button class="col-sm-3 btn btn-primary" type=submit>Submit</button>
+			</form>
+		</div>
+
+	</div>
 </body>
+
 </html>

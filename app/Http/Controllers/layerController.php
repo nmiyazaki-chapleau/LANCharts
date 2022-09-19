@@ -24,7 +24,7 @@ class layerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {    
         return view('layer.create');
     }
 
@@ -36,31 +36,33 @@ class layerController extends Controller
      */
     public function store(Request $request)
     {
-        // validate
-        // read more on validation at http://laravel.com/docs/validation
-        $rules = array(
-            'Name'	=> 'required',
-            'Position'	=> 'required|numeric'
-	);
+        // Validation
+	    
+	$validated = $request->validate();
+	dd($validated);
+	//$layer = Layer::create([
+	//	'ID' => 53,
+	//	'Name' => 'Layer',
+	//	'Position' => 10,
+	//]);
 
-        $validator = Validator::make(Input::all(), $rules);
+	Layer::create($request->all());
 
-        // process the login
-        if ($validator->fails()) {
-            return Redirect::to('layer/create')
-                ->withErrors($validator)
-                ->withInput(Input::except('password'));
-        } else {
-            // store
-            $layer = new layer;
-            $layer->Name = Input::get('Name');
-            $layer->Position = Input::get('Position');
-            $layer->save();
+        //$layer->save();
 
-            // redirect
-            Session::flash('message', 'Successfully created layer!');
-            return Redirect::to('layer');
-        }
+	/*
+	// Insert
+        $layer = new Layer;
+        
+        $layer->Name = $request->Name;
+        $layer->Position = $request->Position;
+
+        $layer->save();
+
+        // Redirect
+        //Session::flash('message', 'Successfully created layer!');
+	 */
+	return redirect()->route('layer.index');
     }
 
     /**
@@ -71,7 +73,7 @@ class layerController extends Controller
      */
     public function show($id)
     {
-        //
+	    //
     }
 
     /**
@@ -82,7 +84,7 @@ class layerController extends Controller
      */
     public function edit($id)
     {
-        //
+    	 //return view('products.edit', compact('layer'));
     }
 
     /**
@@ -94,7 +96,10 @@ class layerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+	$validated = $request->validate();
+	$layer->update($request->all());
+	return redirect()->route('layer.index');
+
     }
 
     /**
@@ -105,6 +110,7 @@ class layerController extends Controller
      */
     public function destroy($id)
     {
-        //
+	    $layer->delete();
+	    return redirect()->route('layer.index');
     }
 }

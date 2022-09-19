@@ -9,5 +9,6 @@ class Layer extends Model
 {
     use HasFactory;
     protected $table = 'layers';
-    public $incrementing = true;
+    //public $incrementing = true;
+    protected $fillable = ['ID', 'Name', 'Position'];
 }
