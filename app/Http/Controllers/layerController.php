@@ -37,32 +37,17 @@ class layerController extends Controller
     public function store(Request $request)
     {
         // Validation
-	    
 	$validated = $request->validate();
-	dd($validated);
-	//$layer = Layer::create([
-	//	'ID' => 53,
-	//	'Name' => 'Layer',
-	//	'Position' => 10,
-	//]);
 
-	Layer::create($request->all());
-
-        //$layer->save();
-
-	/*
 	// Insert
         $layer = new Layer;
-        
         $layer->Name = $request->Name;
         $layer->Position = $request->Position;
+	$layer->save();
 
-        $layer->save();
+	//Layer::create($request->all());
 
-        // Redirect
-        //Session::flash('message', 'Successfully created layer!');
-	 */
-	return redirect()->route('layer.index');
+	return redirect()->route('/')->with('success', 'Layer created successfully');
     }
 
     /**

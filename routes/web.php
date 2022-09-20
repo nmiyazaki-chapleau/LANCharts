@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\layerController;
-use App\Http\Controllers\deviceController;
-use App\Http\Controllers\connectionController;
+//use App\Http\Controllers\deviceController;
+//use App\Http\Controllers\connectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,15 +17,16 @@ use App\Http\Controllers\connectionController;
 */
 
 Route::get('/', [\App\Http\Controllers\DataController::class, 'index']);
-Route::resource('layer', layerController::class);
-/*
+
+//Route::resource('layer', layerController::class);
+
 Route::resources([
 	'layer' 	=> layerController::class,
 	'device'	=> deviceController::class,
 	'connection'	=> connectionController::class,
 ]);
- */
-Route::get('welcome', function () {
-       	return view('welcome');
-});
+
+//Route::get('welcome', function () {
+//       	return view('welcome');
+//});
 
