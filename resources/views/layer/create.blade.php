@@ -24,7 +24,7 @@
 
 		<div class="container text-center justify-content-center">
 			<form class="row" action="{{ route('layer.store') }}" method="POST">
-
+                @csrf
 				<div class="row my-2 form-group">
 					<label class="col-sm-1 col-form-label" for="Name">Name</label>
 					<div class=col-sm-4>
